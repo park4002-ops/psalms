@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시편의 구조 — 다섯 권으로 이루어진 기도의 지도</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1ECDC;
+    --paper-2:#E9E2CD;
+    --ink:#2B2A22;
+    --ink-soft:#56523F;
+    --pine:#1E2B23;
+    --pine-2:#16201A;
+    --reed:#56684A;
+    --reed-light:#8FA37C;
+    --wheat:#B98A3E;
+    --wheat-light:#D8B373;
+    --moss:#DCE3CC;
+    --line:rgba(43,42,34,0.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Serif KR',serif;
+    font-weight:400;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:radial-gradient(rgba(43,42,34,0.035) 1px, transparent 1px);
+    background-size:3px 3px;
+    z-index:1;
+  }
+  .eyebrow{
+    font-family:'Noto Sans KR',sans-serif;
+    font-weight:500;
+    font-size:12.5px;
+    letter-spacing:0.22em;
+    color:var(--reed);
+    text-transform:uppercase;
+  }
+  .topnav{
+    position:relative;
+    z-index:5;
+    display:flex;
+    justify-content:center;
+    gap:1.6rem;
+    padding:1.1rem 1rem;
+    background:var(--pine-2);
+  }
+  .topnav a{
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    color:#C9C2A6;
+    text-decoration:none;
+    padding-bottom:3px;
+    border-bottom:1px solid transparent;
+  }
+  .topnav a.current{color:var(--wheat-light);border-bottom-color:var(--wheat-light);}
+  .topnav a:hover{color:#F6F1E0;}
+
+  .hero{
+    position:relative;
+    min-height:80svh;
+    background:linear-gradient(180deg,var(--pine) 0%, var(--pine-2) 100%);
+    color:#EFE8D2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:4rem 1.5rem 4rem;
+    overflow:hidden;
+  }
+  .hero svg.stream-hero{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    opacity:0.5;
+  }
+  .hero-inner{position:relative;z-index:2;max-width:720px;}
+  .hero .eyebrow{color:var(--wheat-light);margin-bottom:1.4rem;display:inline-block;}
+  .hero h1{
+    font-family:'Gowun Batang',serif;
+    font-weight:700;
+    font-size:clamp(38px,7vw,64px);
+    line-height:1.25;
+    letter-spacing:-0.01em;
+    color:#F6F1E0;
+  }
+  .hero .sub{
+    margin-top:1.6rem;
+    font-size:18px;
+    color:#C9C2A6;
+    font-weight:300;
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.8;
+  }
+  .hero .verse{
+    margin-top:3rem;
+    font-family:'Gowun Batang',serif;
+    font-size:16px;
+    color:var(--wheat-light);
+    font-style:italic;
+    border-top:1px solid rgba(216,179,115,0.3);
+    padding-top:1.6rem;
+    display:inline-block;
+  }
+
+  .path-wrap{
+    position:relative;
+    max-width:880px;
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+  .stream-line{
+    position:absolute;
+    left:38px;
+    top:0;
+    bottom:0;
+    width:2px;
+    z-index:0;
+  }
+  @media (max-width:680px){.stream-line{left:18px;}}
+  .stream-line svg{position:absolute;top:0;left:-1px;height:100%;width:4px;overflow:visible;}
+  .stream-line path{stroke:var(--reed-light);stroke-width:2;fill:none;opacity:0.55;}
+
+  section.walk{
+    position:relative;
+    padding:5.5rem 0 5.5rem 86px;
+    border-top:1px solid var(--line);
+  }
+  @media (max-width:680px){section.walk{padding-left:54px;}}
+  section.walk:first-of-type{border-top:none;}
+
+  .stone{
+    position:absolute;
+    left:26px;
+    top:5.8rem;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--reed);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:11px;
+    font-weight:500;
+    color:var(--reed);
+    z-index:2;
+  }
+  @media (max-width:680px){.stone{left:6px;width:22px;height:22px;font-size:10px;}}
+
+  .walk-label{
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:12px;
+    letter-spacing:0.16em;
+    color:var(--ink-soft);
+    margin-bottom:0.7rem;
+  }
+  .walk h2{
+    font-family:'Gowun Batang',serif;
+    font-weight:700;
+    font-size:clamp(26px,3.6vw,34px);
+    line-height:1.35;
+    color:var(--ink);
+    max-width:600px;
+    margin-bottom:1.6rem;
+  }
+  .walk p{max-width:620px;font-size:16.5px;color:var(--ink);margin-bottom:1.2rem;}
+  .walk p:last-of-type{margin-bottom:0;}
+  .walk .lead{font-size:18px;color:var(--ink-soft);font-weight:300;margin-bottom:1.6rem;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease, transform 0.8s ease;}
+  .reveal.show{opacity:1;transform:translateY(0);}
+
+  .note{
+    margin-top:1.8rem;
+    max-width:600px;
+    background:var(--paper-2);
+    border-left:3px solid var(--wheat);
+    padding:1.1rem 1.4rem;
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+
+  /* 5권 지도 */
+  .bookmap{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-width:640px;
+    margin-top:1.8rem;
+  }
+  .bookmap .book{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:14px;
+    align-items:start;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    padding:1rem 1.2rem;
+  }
+  .bookmap .num{
+    font-family:'Gowun Batang',serif;
+    font-size:26px;
+    color:var(--wheat);
+  }
+  .bookmap .range{
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .bookmap .desc h4{
+    font-family:'Noto Serif KR',serif;
+    font-weight:600;
+    font-size:15.5px;
+    margin-bottom:0.3rem;
+    color:var(--ink);
+  }
+  .bookmap .desc p{font-size:14px;color:var(--ink-soft);max-width:none;margin:0;}
+
+  /* 구조 다이어그램 - 제1권 */
+  .ringmap{
+    max-width:560px;
+    margin:1.8rem auto 0;
+    text-align:center;
+  }
+  .ringmap .row{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:8px;
+    flex-wrap:wrap;
+  }
+  .ringmap .cell{
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:12.5px;
+    padding:0.5rem 0.9rem;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .ringmap .cell.center{
+    background:var(--wheat);
+    color:#412402;
+    font-weight:500;
+    border-color:var(--wheat);
+  }
+
+  .pairtopic{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    max-width:640px;
+    margin-top:1.6rem;
+  }
+  @media (max-width:600px){.pairtopic{grid-template-columns:1fr;}}
+  .pairtopic div{
+    background:var(--paper-2);
+    border-top:3px solid var(--reed);
+    padding:1.2rem 1.3rem;
+  }
+  .pairtopic div:last-child{border-top-color:var(--wheat);}
+  .pairtopic .t{
+    font-family:'Gowun Batang',serif;
+    font-size:16px;
+    color:var(--ink);
+    margin-bottom:0.5rem;
+  }
+  .pairtopic .d{font-size:14px;color:var(--ink-soft);}
+
+  .closing{
+    background:var(--pine);
+    color:#EFE8D2;
+    padding:6rem 1.5rem 5rem;
+    text-align:center;
+  }
+  .closing-inner{max-width:560px;margin:0 auto;}
+  .closing h3{
+    font-family:'Gowun Batang',serif;
+    font-size:clamp(26px,4vw,34px);
+    margin-bottom:1.4rem;
+    color:#F6F1E0;
+  }
+  .closing p{color:#C9C2A6;font-weight:300;font-size:15.5px;margin-bottom:0.8rem;}
+  .closing .final{
+    margin-top:2.2rem;
+    font-family:'Gowun Batang',serif;
+    font-size:19px;
+    color:var(--wheat-light);
+    border-top:1px solid rgba(216,179,115,0.3);
+    padding-top:1.8rem;
+  }
+  footer{
+    text-align:center;
+    padding:2.4rem 1.5rem;
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    background:var(--paper);
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <svg class="stream-hero" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <path d="M -50 600 Q 200 500 400 580 T 800 520 T 1250 600" stroke="#8FA37C" stroke-width="2" fill="none" opacity="0.35"/>
+    <path d="M -50 680 Q 250 600 450 660 T 850 600 T 1250 680" stroke="#B98A3E" stroke-width="1.4" fill="none" opacity="0.25"/>
+  </svg>
+  <div class="hero-inner">
+    <span class="eyebrow">시편 개론</span>
+    <h1>다섯 권으로 이루어진 기도의 지도</h1>
+    <p class="sub">시편은 흩어진 노래 모음이 아니라, 누군가 정성껏 설계한 기도의 책입니다. 끝에서부터 거슬러 올라가며 그 설계를 따라가 봅니다.</p>
+    <p class="verse">"여호와를 찬양하라" — 할렐루야, 시편의 처음과 끝</p>
+  </div>
+</section>
+
+<div class="path-wrap">
+  <div class="stream-line">
+    <svg viewBox="0 0 4 100" preserveAspectRatio="none">
+      <path d="M 2 0 Q 0 12 2 24 Q 4 36 2 48 Q 0 60 2 72 Q 4 84 2 96 L 2 100" vector-effect="non-scaling-stroke"/>
+    </svg>
+  </div>
+
+  <section class="walk" id="s1">
+    <div class="stone">1</div>
+    <div class="reveal">
+      <div class="walk-label">시편이란 무엇인가</div>
+      <h2>150편의 노래, 한 권의 기도책</h2>
+      <p class="lead">시편은 150편의 고대 히브리 시·노래·기도문 모음집으로, 이스라엘 역사의 여러 시기에 걸쳐 쓰였습니다.</p>
+      <p>가장 많은 73편은 다윗 왕과 관련되며, 그는 시인이자 하프 연주자로 알려져 있습니다. 그러나 그 외에도 아삽, 고라 자손, 성전 예배 인도자들, 솔로몬과 모세의 시가 있고, 약 3분의 1은 작가 미상입니다.</p>
+      <p>이 시들 중 많은 수가 성전의 성가대에 의해 노래로 불렸지만, 그렇다고 시편이 단순한 찬송가 모음집인 것은 아닙니다. 이스라엘이 바벨론 포로가 된 이후 어느 시점에, 이 고대 시들이 수집되고 의도적으로 배열되어 지금의 시편이 완성되었습니다. 그 안에는 처음부터 끝까지 읽지 않으면 알아내기 어려운, 매우 독특한 구성과 메시지가 담겨 있습니다.</p>
+    </div>
+  </section>
+
+  <section class="walk" id="s2">
+    <div class="stone">2</div>
+    <div class="reveal">
+      <div class="walk-label">구조 읽기</div>
+      <h2>끝에서부터 읽을 때 보이는 것</h2>
+      <p>시편이 어떻게 구성되었는지 알아내는 데 가장 도움이 되는 방법은 끝부분부터 읽는 것입니다. 시편은 이스라엘의 하나님을 찬양하는 다섯 편의 시(146~150편)로 끝을 맺는데, 이 다섯 편은 모두 시작과 끝에 ‘할렐루야’라는 단어로 둘러싸여 있습니다. 이는 히브리어로 ‘찬양하라’는 명령이며, ‘야’는 거룩한 이름 여호와를 줄인 말입니다.</p>
+      <p>이렇게 정교하게 다섯 부분으로 배열된 결론을 보면, 누군가 시편 전체를 의도적으로 구성했다는 인상을 받게 됩니다. 실제로 시편의 표제를 관심 있게 살펴보면, 책 전체에 걸쳐 ‘제1·2·3·4·5권’이 표기되어 있고, 시편이 크게 다섯 부분으로 나뉜다는 것을 발견할 수 있습니다. 각 권의 마지막은 매우 비슷한 형태의 송영, 곧 편집자가 덧붙인 듯한 송영구로 끝납니다. “이스라엘의 하나님 여호와를 영원히 송축할지로다. 아멘, 아멘” 같은 문장입니다. 이렇게 시편 전체에는 결론이 있고, 그 안쪽은 다섯 개의 주요 부분으로 이루어져 있습니다.</p>
+    </div>
+  </section>
+
+  <section class="walk" id="s3">
+    <div class="stone">3</div>
+    <div class="reveal">
+      <div class="walk-label">서문</div>
+      <h2>시편 1·2편, 두 가지 주제의 문</h2>
+      <p>결론을 확인했다면 이제 시편의 도입부, 곧 서문을 찾아볼 차례입니다. 서문은 바로 시편 1~2편입니다. 이 두 편이 제1권의 바깥쪽에 따로 배치된 이유는, 제1권의 다른 시들과 달리 다윗과 직접 연관되지 않고 작가 미상이기 때문입니다.</p>
+      <p>시편 1편은 여호와의 율법을 밤낮으로 묵상하며 순종하는 자가 얼마나 복 있는지를 노래합니다. 여기서 ‘율법’이라는 단어는 단순한 가르침을 뜻하는 동시에, 구체적으로는 구약 앞부분의 토라, 곧 모세오경을 가리킵니다. 이 단어가 두 가지 의미를 함께 지닌다는 사실은, 시편이 왜 다섯 부분으로 이루어졌는지를 설명해 줍니다. 시편은 하나님의 백성이 평생 어떻게 기도해야 할지 가르쳐 주는 ‘새로운 토라’로서, 모세오경에서 주어진 하나님의 율법에 순종하도록 돕습니다.</p>
+      <p>시편 2편은 사무엘하 7장에서 하나님이 다윗 왕에게 주신 언약을 시적으로 풀어낸 시입니다. 장차 메시아 왕이 오셔서 하나님의 나라를 세우고, 열방에 만연한 악과 불순종을 심판하실 것을 노래합니다. 그리고 “여호와께 피하는 모든 사람은 복이 있다”는 말로 마무리되어, 시편 1편의 첫머리와 같은 표현으로 연결됩니다.</p>
+      <div class="note">시편 1·2편은 시편 전체가 두 개의 큰 주제, 곧 ‘율법에 신실하게 순종하려는 마음’과 ‘미래의 메시아 나라를 기다리는 소망’을 품은 하나님 백성의 기도책으로 구성되었음을 보여줍니다.</div>
+    </div>
+  </section>
+
+  <section class="walk" id="s4">
+    <div class="stone">4</div>
+    <div class="reveal">
+      <div class="walk-label">제1권의 설계</div>
+      <h2>중심을 향해 짜인 고리 구조</h2>
+      <p>두 주제가 소개된 뒤, 작은 책들이 그 주제를 어떻게 둘러싸고 있는지 살펴볼 수 있습니다. 제1권은 정중앙에 15~24편으로 이어지는 시 모음을 배치하는데, 이 모음은 언약에 대한 신실함을 요구하는 내용으로 시작하고 끝을 맺습니다.</p>
+      <div class="ringmap">
+        <div class="row"><span class="cell">15편</span><span class="cell">언약의 신실함</span><span class="cell">24편</span></div>
+        <div class="row"><span class="cell">16~19편 · 간구하는 다윗</span><span class="cell">↔</span><span class="cell">20~23편 · 메시아 왕의 예표</span></div>
+        <div class="row"><span class="cell center">19편 · 율법을 주신 하나님 찬양</span></div>
+      </div>
+      <p style="margin-top:1.6rem">16~19편은 신실함의 본보기로 다윗을 그립니다. 그가 하나님의 구원을 바라며 간구할 때 하나님은 그를 왕으로 높이십니다. 이에 상응하는 20~23편에서는, 과거의 다윗이 미래에 오실 메시아 왕의 형상으로 나타나 마찬가지로 하나님께 간구하며, 구원받아 열방을 다스리는 나라를 얻게 됩니다. 그리고 이 시들의 정중앙에 시편 19편이 놓인 것은 율법을 주신 하나님을 찬양하기 위함입니다. 시편 1·2편의 두 주제, 곧 율법과 메시아가 제1권 한가운데에서 이렇게 단단히 하나로 묶입니다.</p>
+    </div>
+  </section>
+
+  <section class="walk" id="s5">
+    <div class="stone">5</div>
+    <div class="reveal">
+      <div class="walk-label">제2권 · 제3권</div>
+      <h2>소망에서 탄원으로</h2>
+      <p>제2권은 미래에 시온의 성전으로 돌아올 것을 향한 소망을 노래하는 시들로 시작합니다. 이는 메시아의 나라에 대한 소망과 밀접하게 맞닿아 있습니다. 그리고 제2권은 미래의 메시아 왕이 열방을 통치하실 것을 묘사하는 시로 끝을 맺는데, 예언서에 나오는 메시아의 나라에 대한 구절들을 두루 반복하며, 하나님께서 아브라함에게 “열방을 복 주시겠다”고 하신 약속이 이 왕의 통치를 통해 성취될 것이라는 말로 마무리됩니다.</p>
+      <p>제3권 역시 하나님이 다윗에게 하신 약속을 떠올리게 하는 시로 끝을 맺지만, 이번에는 포로된 이스라엘의 현실을 마주합니다. 시인은 하나님이 다윗의 자손을 결코 버리지 않겠다고 약속하셨음을 알면서도, 이스라엘의 파괴와 포로됨, 다윗 왕국의 몰락이 불순종의 결과였음을 인정합니다. 그리고 “주께서 다윗에게 하신 약속을 잊지 말아 주십시오” 간청하며 제3권을 마칩니다.</p>
+    </div>
+  </section>
+
+  <section class="walk" id="s6">
+    <div class="stone">6</div>
+    <div class="reveal">
+      <div class="walk-label">제4권</div>
+      <h2>위기의 한복판에서, 온 세상의 왕</h2>
+      <p>제4권은 바로 이 포로라는 위기 상황에 대처하는 내용으로 채워져 있습니다. 첫 시(90편)는 ‘모세의 기도’를 통해 이스라엘의 뿌리를 기억하게 합니다. 황금 송아지 사건 이후 시내산에서 하나님께 자비를 구했던 그 기도입니다.</p>
+      <p>제4권의 중심에는 이스라엘의 하나님이 온 세상의 진정한 왕이심을 선포하는 시들이 자리합니다. 나무와 산과 강, 모든 피조물이 그날, 곧 열방에 하나님의 공의와 그의 나라가 임할 그날을 찬양하는 시들로 가득합니다. 포로의 절망 한가운데서 시편은 여전히 다스리시는 하나님을 노래하는 것입니다.</p>
+    </div>
+  </section>
+
+  <section class="walk" id="s7">
+    <div class="stone">7</div>
+    <div class="reveal">
+      <div class="walk-label">제5권</div>
+      <h2>두 주제가 하나로 결합되는 자리</h2>
+      <p>제5권은 하나님이 그의 백성의 울부짖음을 들으시고, 장차 미래의 왕을 보내 악을 물리치고 그분의 나라를 세우실 것을 확증하는 시들로 시작합니다. 그 안에는 두 개의 큰 모음집도 담겨 있는데, 하나는 할렐 시편이고 다른 하나는 ‘성전에 올라가는 노래’입니다. 각 모음집은 모두 미래의 메시아 나라에 대한 소망으로 끝을 맺으며, 하나님께서 출애굽 때처럼 다시 그의 백성을 구원하실 것이라는 기대를 품게 합니다.</p>
+      <p>그리고 바로 그 사이에 119편이 있습니다. 시편 중 가장 긴 시로, 각 연의 첫 글자가 히브리어 알파벳 순서대로 시작되는 형태이며, 하나님이 그의 백성에게 주신 선물인 율법의 말씀에 대한 감탄으로 가득합니다. 시편 1·2편의 두 주제, 곧 율법과 메시아가 마침내 제5권에서 온전히 결합되는 것입니다.</p>
+      <p>이 모든 것은 결론부의 다섯 편(146~150편)으로 이어집니다. 그 가운데 148편은 모든 피조물에게 이스라엘의 하나님을 찬양하라고 명령하는데, 그분이 그의 백성의 ‘뿔’을 높이셨기 때문입니다. 뿔은 전쟁에서 승리했을 때 들었던 짐승 뿔의 비유로, 한나의 노래(사무엘상 2장)를 비롯한 여러 시편에도 등장하는 이미지입니다. 이 뿔은 미래의 메시아 왕과 악에 대한 그의 승리를 상징하며, 이 놀라운 책에 어울리는 결론을 이룹니다.</p>
+    </div>
+  </section>
+
+  <section class="walk" id="s8">
+    <div class="stone">8</div>
+    <div class="reveal">
+      <div class="walk-label">맺음말</div>
+      <h2>애가에서 찬양으로, 기도의 본질</h2>
+      <p>시편을 순서대로 읽지 않으면 놓치기 쉬운 또 하나의 사실이 있습니다. 시편에는 다양한 종류의 많은 시가 담겨 있지만, 이들은 크게 ‘애가’와 ‘찬양시’라는 두 유형으로 나뉩니다.</p>
+      <div class="pairtopic">
+        <div>
+          <div class="t">애가</div>
+          <div class="d">끔찍한 세상에 대한 고통과 혼란, 분노, 그리고 시인 자신에게 일어나는 일들을 정직하게 토로합니다. 세상의 잘못된 부분에 주목하며 하나님께 무언가 행하시기를 구합니다. 이는 악을 마주한 우리의 정당한 반응입니다.</div>
+        </div>
+        <div>
+          <div class="t">찬양시</div>
+          <div class="d">기쁨과 축하의 시이며, 세상의 좋은 부분에 주목합니다. 하나님이 우리 삶에 행하신 일들을 이야기하며 그분께 감사를 드립니다.</div>
+        </div>
+      </div>
+      <p style="margin-top:1.8rem">애가는 시편의 앞부분, 특히 제1권에 집중되어 있습니다. 그러나 책을 따라 걸어가다 보면 찬양시가 점점 더 자주 등장하기 시작하고, 제4권과 제5권에 이르면 찬양시가 애가보다 많아지는 것을 보게 됩니다. 그리고 마침내 다섯 편의 할렐루야 시로 막을 내립니다.</p>
+      <p>애가에서 찬양으로의 이러한 전환은 기도의 본질에 대해 말해 줍니다. 시편의 가르침대로 메시아의 나라를 소망하며 살아갈 때, 우리는 세상과 우리 삶의 비극적인 모습을 마주하며 내면의 갈등을 겪게 됩니다. 시편은 그런 우리에게 삶의 고통을 무시하지 말라고 가르칩니다. 동시에 성경이 말하는 믿음은 미래를 내다보는 것이며, 미래의 메시아 나라에 대해 하나님이 하신 약속을 기대하는 것이라고 말합니다. 율법과 메시아, 애가와 찬양시, 그 사이를 흐르는 리듬과 소망. 이것이 바로 시편이 우리에게 전하는 내용입니다.</p>
+    </div>
+  </section>
+</div>
+
+<div class="closing">
+  <div class="closing-inner">
+    <h3>지도를 손에 들고, 다시 1편으로</h3>
+    <p>이제 시편의 설계도를 보았으니, 처음으로 돌아가 다시 걸어 보십시오.</p>
+    <p>같은 시들이 전과는 다른 깊이로 다가올 것입니다.</p>
+    <div class="final">율법을 묵상하고 메시아를 기다리는 백성의 기도, 그 산책은 계속됩니다.</div>
+  </div>
+</div>
+
+<footer>시편 산책 II — 다섯 권으로 이루어진 기도의 지도 · 말씀 묵상 공동체를 위한 안내서</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
