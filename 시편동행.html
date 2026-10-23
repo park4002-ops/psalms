@@ -205,6 +205,36 @@
     .station-num{ width:44px; height:44px; font-size:18px; }
     .spine::before{ left:21px; }
   }
+
+  /* ---------- 구분: 전체 그림 / 이번에 읽는 부분 ---------- */
+  .part{ margin:46px 0 22px; display:flex; align-items:center; gap:14px; }
+  .part:first-of-type{ margin-top:8px; }
+  .part .tag{
+    flex:none; font-size:14px; font-weight:800; letter-spacing:.04em; color:#FFFFFF;
+    background:var(--teal); border-radius:999px; padding:7px 15px;
+  }
+  .part.now .tag{ background:var(--gold-deep); }
+  .part h2.ph{ font-size:23px; line-height:1.35; color:var(--ink); }
+  .part-lead{ font-size:17px; color:var(--ink-soft); margin:-6px 4px 22px; line-height:1.8; }
+  .day-table{ width:100%; border-collapse:collapse; margin:6px 0 26px; font-size:15.5px; }
+  .day-table th,.day-table td{ text-align:left; padding:11px 9px; border-bottom:2px solid var(--panel-line); vertical-align:top; }
+  .day-table th{ color:var(--ink-faint); font-weight:700; font-size:12.5px; letter-spacing:.03em; }
+  .day-table td:first-child{ white-space:nowrap; font-weight:700; color:var(--gold-deep); }
+  .day-table td:nth-child(2){ white-space:nowrap; font-weight:700; }
+  .psalm-card{
+    background:var(--panel); border:2px solid var(--panel-line); border-left:6px solid var(--teal);
+    border-radius:14px; padding:20px 20px 18px; margin:0 0 16px; box-shadow:var(--shadow);
+  }
+  .psalm-card:nth-of-type(2n){ border-left-color:var(--gold); }
+  .psalm-card:nth-of-type(3n){ border-left-color:var(--plum); }
+  .psalm-card .when{ font-size:13.5px; font-weight:800; color:var(--ink-faint); letter-spacing:.03em; margin-bottom:4px; }
+  .psalm-card h3{ font-size:21px; margin:0 0 4px; color:var(--ink); line-height:1.4; }
+  .psalm-card .genre{ display:inline-block; font-size:13.5px; font-weight:800; color:var(--teal-deep); background:var(--teal-tint); border-radius:8px; padding:3px 10px; margin-bottom:12px; }
+  .psalm-card p{ font-size:17px; color:var(--ink-soft); margin:0 0 11px; line-height:1.78; }
+  .psalm-card p:last-child{ margin-bottom:0; }
+  .psalm-card b{ color:var(--plum-deep); }
+  .psalm-card .verse{ font-family:'Noto Serif KR',serif; font-weight:600; color:var(--ink); border-left:3px solid var(--panel-line); padding-left:12px; font-size:16.5px; }
+  .psalm-card .look{ font-size:15.5px; color:var(--ink-faint); border-top:1px dashed var(--panel-line); padding-top:10px; margin-top:12px; }
 </style>
 </head>
 <body>
@@ -221,6 +251,9 @@
     <p>야고보서는 "서로 기도하라", 그리고 <b>엘리야도 우리와 성정이 같은 사람이었다</b>는 말로 끝났습니다. 공동체가 함께 기도하고 찬송하라는 그 마지막 부탁이 오늘부터 시편으로 그대로 이어집니다.</p>
     <p>야고보서가 기도로 책을 닫았다면, 시편은 처음부터 끝까지 <b>기도와 찬양으로 채워진 책</b>입니다. 본회퍼는 시편을 "구약성서에 쓰여진 이스라엘의 기도책"이라 불렀습니다.</p>
   </section>
+
+  <div class="part"><span class="tag">전체 그림</span><h2 class="ph">시편이라는 책 전체</h2></div>
+  <p class="part-lead">150편 전체를 한눈에 보는 자리입니다. 어느 시편을 읽든 이 큰 그림 안에서 읽게 됩니다.</p>
 
   <div class="spine">
 
@@ -290,6 +323,62 @@
     </div>
 
   </div>
+
+  <div class="part now"><span class="tag">이번에 읽는 부분</span><h2 class="ph">시편 16~19편</h2></div>
+  <p class="part-lead">전체 150편 가운데, 10월 26일~31일 한 주 새벽에 읽는 부분만 따로 모았습니다. 네 편은 모두 1권에 속한 '다윗의' 시편이며, 신뢰·호소·감사·찬양으로 이어집니다.</p>
+
+  <table class="day-table">
+    <tr><th>날짜</th><th>본문</th><th>갈래</th></tr>
+    <tr><td>10/26(월)</td><td>시 16:1~11</td><td>신뢰시</td></tr>
+    <tr><td>10/27(화)</td><td>시 17:1~15</td><td>호소 기도</td></tr>
+    <tr><td>10/28(수)</td><td>시 18:1~15</td><td>감사시</td></tr>
+    <tr><td>10/29(목)</td><td>시 18:16~29</td><td>감사시</td></tr>
+    <tr><td>10/30(금)</td><td>시 18:30~50</td><td>감사시</td></tr>
+    <tr><td>10/31(토)</td><td>시 19:1~14</td><td>찬양시 + 지혜시</td></tr>
+  </table>
+
+  <div class="psalm-card">
+    <div class="when">10월 26일</div>
+    <h3>시편 16편 — 주 밖에는 나의 복이 없습니다</h3>
+    <span class="genre">신뢰시</span>
+    <p>16편은 초대교회 때부터 <b>부활절과 이어진 구약 본문</b>으로 읽혔습니다. 8~11절이 사도행전 2장에서 베드로가 예수님의 부활을 증거하는 본문으로 인용되기 때문입니다(행 2:25~31).</p>
+    <p>부활 신앙은 철저히 하나님 중심의 신앙입니다. 하나님 한 분만이 나를 구원하시고, 죽음을 넘어 미래에도 나를 생명으로 인도하신다는 믿음입니다. 표제의 '믹담'은 기록된 글을 가리키며, 구원받은 일을 기념하는 비문이었을 것이라는 해석이 있습니다.</p>
+    <p class="verse">"내가 여호와께 아뢰되 주는 나의 주님이시오니 주 밖에는 나의 복이 없다 하였나이다" (16:2)</p>
+    <p class="look">읽을 때 보십시오 · 시인이 "주님이 나의 복"이라 고백하는 자리와, 3절에서 성도와 함께함을 즐거워하는 자리는 어떻게 이어지는가?</p>
+  </div>
+
+  <div class="psalm-card">
+    <div class="when">10월 27일</div>
+    <h3>시편 17편 — 의의 호소를 들으소서</h3>
+    <span class="genre">호소 기도</span>
+    <p>시인은 야웨의 길을 걷는 사람이고, 그를 대적하는 자들은 교만에 빠져 야웨를 경외하지 않는 사람들입니다. 3절에서 시인은 하나님께서 자기 마음을 시험하셨으나 흠을 찾지 못하실 것이라고 담대히 말합니다.</p>
+    <p class="verse">"나는 의로운 중에 주의 얼굴을 뵈오리니 깰 때에 주의 형상으로 만족하리이다" (17:15)</p>
+    <p class="look">읽을 때 보십시오 · 자신의 의를 말하는 담대함과, 끝내 "주의 얼굴"로 만족하겠다는 고백은 어떻게 함께 있는가?</p>
+  </div>
+
+  <div class="psalm-card">
+    <div class="when">10월 28일 · 29일 · 30일 (세 날에 나누어 읽습니다)</div>
+    <h3>시편 18편 — 나의 힘이신 여호와여</h3>
+    <span class="genre">감사시</span>
+    <p>다윗이 하나님께로부터 특별한 지위를 받아 열방을 향해 왕권을 행사하고 있음을 밝히는 노래입니다. 시인은 "사람이 하나님을 사랑하게 될 때 가장 큰 힘을 얻게 된다"는 고백으로 시작합니다. 시의 "많은 물"은 열방 세력, 혼돈 세력, 악의 세력을 뜻합니다.</p>
+    <p>25~26절은 하나님이 자비한 자에게 자비로우시고 깨끗한 자에게 깨끗하심을 보이신다고 말합니다. 하나님을 만나는 마음과 자세로 사람을 만나야 한다는 도전이 거기서 나옵니다.</p>
+    <p class="verse">"나의 힘이신 여호와여 내가 주를 사랑하나이다" (18:1)</p>
+    <p class="look">읽을 때 보십시오 · 28일(1~15절)은 대체로 위기 속에서 건지시는 장면, 29일(16~29절)은 의로움과 보응, 30일(30~50절)은 승리와 찬송에 가깝습니다. 같은 하나님이 세 장면에서 어떻게 다르게 나타나시는가?</p>
+    <p class="table-note">⚠️ 43절 이하에서 이방이 다윗을 섬긴다는 말은, 실제 다윗 개인이라기보다 공평과 정의의 화신으로 승화된 '신학적 다윗'을 가리킨다는 해석이 있습니다. 34절의 '놋 활'은 구리로 장식한 활 또는 구리 촉 화살로 보는 견해가 있고, 시적 표현일 수도 있습니다.</p>
+  </div>
+
+  <div class="psalm-card">
+    <div class="when">10월 31일</div>
+    <h3>시편 19편 — 하늘이 하나님의 영광을 선포합니다</h3>
+    <span class="genre">찬양시 + 지혜시</span>
+    <p>19편은 둘로 나뉩니다. 1~6절은 <b>피조물이 하나님을 찬양하는 노래</b>이고, 7~14절은 <b>주님의 율법에 대한 지혜의 노래</b>입니다. 자연을 통해서든 율법을 통해서든 하나님의 자기 계시는 인간이 핑계할 수 없을 만큼 분명하다는 것이 핵심입니다.</p>
+    <p>고대 근동의 시에서는 자연이 신격화되어 태양이 숭배되었지만, 19편에서는 자연이 인격화되어 유일하신 하나님을 찬양합니다. 태양이 없는 생명이 불가능하듯, 말씀이 없는 삶은 참된 삶이라 할 수 없습니다. 토라는 본래 '가르침'이라는 뜻이며, 사람을 복과 생명의 길로 이끄는 삶의 나침반입니다. 하나님의 구원의 은총이 율법의 요구보다 먼저입니다.</p>
+    <p class="verse">"하늘이 하나님의 영광을 선포하고 궁창이 그의 손으로 하신 일을 나타내는도다" (19:1)</p>
+    <p class="verse">"나의 반석이시요 나의 구속자이신 여호와여 내 입의 말과 마음의 묵상이 주님 앞에 열납되기를 원하나이다" (19:14)</p>
+    <p class="look">읽을 때 보십시오 · 1~6절의 하늘과 7~14절의 말씀이, 마지막 기도(14절)에서 어떻게 한 사람의 입과 마음으로 모이는가?</p>
+  </div>
+
+  <p class="table-note" style="margin:6px 4px 40px;">이 부분의 해설은 양진일 목사 강의안(시편)의 16~19편 개관과 묵상을 바탕으로 정리했습니다. 한 날의 본문을 읽을 때 위 카드를 펼쳐 두고 읽으면 도움이 됩니다.</p>
 
   <div class="key-verse" style="margin:0 0 40px;">
     <blockquote>"내가 여호와를 항상 내 앞에 모심이여 그가 나의 오른쪽에 계시므로 내가 흔들리지 아니하리로다"</blockquote>
